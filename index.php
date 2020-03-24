@@ -34,9 +34,11 @@ use classes\Url;
             </div>
         </form>
     </div>
+    <div class="image"></div>
     <?php
     if (isset($_POST['word'])) {
-        print $_POST['word'];
+        $word= $_POST['word'];
+    echo $word;
     }
 
     ?>
