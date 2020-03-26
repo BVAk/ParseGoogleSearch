@@ -1,6 +1,6 @@
 <?php
 
-use classes\Url; 
+use classes\Url;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +22,10 @@ use classes\Url;
 
 <body>
     <div class="main">
-        <div><h1> Choose nail style for today</h1></div>
-        <form action="" method="post">
+        <center class="p-2">
+            <h1> Choose nail style for today</h1>
+        </center>
+        <form action="" method="post" class="p-2">
             <div class="input-group">
                 <input id="word" name="word" type="text" class="form-control" placeholder="Search this blog">
                 <div class="input-group-append">
@@ -33,12 +35,14 @@ use classes\Url;
                 </div>
             </div>
         </form>
-    </div>
-    <div class="image"></div>
+    
+    <div class="image"></div></div>
     <?php
     if (isset($_POST['word'])) {
-        $word= $_POST['word'];
-    echo $word;
+        $word = $_POST['word'];
+        $url = new Url($word);
+
+        echo $word;
     }
 
     ?>
