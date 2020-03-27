@@ -38,12 +38,14 @@ use classes\Url;
     
     <div class="image"></div></div>
     <?php
+    function start(){
     if (isset($_POST['word'])) {
         $word = $_POST['word'];
         $url = new Url($word);
-
-        echo $word;
+$url->getSearchWord($word);
+        
     }
+}
 
     ?>
 </body>
