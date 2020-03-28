@@ -1,6 +1,5 @@
 <?php
-
-use classes\Url;
+include 'classes/MakeUrl.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,17 +34,18 @@ use classes\Url;
                 </div>
             </div>
         </form>
-    
-    <div class="image"></div></div>
+
+        <div class="image"></div>
+    </div>
     <?php
-    function start(){
+
     if (isset($_POST['word'])) {
         $word = $_POST['word'];
-        $url = new Url($word);
-$url->getSearchWord($word);
-        
+        $url = new MakeUrl($word);
+        echo $url->getSearchWord();
+
     }
-}
+
 
     ?>
 </body>
