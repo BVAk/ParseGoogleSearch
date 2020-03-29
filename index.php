@@ -35,19 +35,19 @@ include 'classes/MakeUrl.php';
             </div>
         </form>
 
-        <div class="image"></div>
+        <?php
+
+if (isset($_POST['word'])) {
+    $word = $_POST['word'];
+    $url = new MakeUrl($word);
+    echo $url->getSearchWord();
+
+}
+
+
+?>
     </div>
-    <?php
-
-    if (isset($_POST['word'])) {
-        $word = $_POST['word'];
-        $url = new MakeUrl($word);
-        echo $url->getSearchWord();
-
-    }
-
-
-    ?>
+   
 </body>
 
 </html>

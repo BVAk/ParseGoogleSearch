@@ -19,7 +19,7 @@ class MakeUrl
         $images = self::string_extractor($contents, 'unescapedUrl":"', '",');
         $image_str = "";
         foreach ($images as $image) {
-            print("<img src='" . $image . "'class='image'>");
+            print("<center><img src='" . $image . "'class='image'></center>");
             
         }
         
