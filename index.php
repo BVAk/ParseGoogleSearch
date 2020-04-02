@@ -40,7 +40,12 @@ include 'classes/MakeUrl.php';
 if (isset($_POST['word'])) {
     $word = $_POST['word'];
     $url = new MakeUrl($word);
-    echo $url->getSearchWord();
+    $img= $url->getSiteContent();
+    
+foreach ($img[0] as $image){
+    print("<center><img " . $image . "class='image'></center>");
+        
+}
 
 }
 
