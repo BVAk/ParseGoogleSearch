@@ -22,27 +22,15 @@ class MakeUrl
 
         $contents = curl_exec($curl_handle);
         curl_close($curl_handle);
-        preg_match_all('/<img[^>]+>/i', $contents, $result);
-        $img = array();
-
-        foreach ($result[0] as $img_tag) {
-            preg_match_all('/(src|alt)=("[^"]*")/i', $img_tag, $img[]);
-        }
-
-        foreach ($img as $pict) {
-            $a[] = str_replace('src=', '', $pict[0]);
-        }
-        foreach ($a as $pict) {
-            $b['src'][] = str_replace('alt=', '', $pict[0]);
-            $b['alt'][] = str_replace('alt=', '', $pict[1]);
-        }
+        preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?alt=[\'"](.*?)[\'"].*?>/i', $contents, $matches);
         
-        for ($i=0;$i<count($b);$i++) {
-            if(strpos($b['alt'][$i], $word) !== false){
-            print("<center>".$word."</center>");            
-            print("<center><image class='image' src=" . $b['src'][$i] . "> </center>");
-            print("<center>".$b['alt'][$i]."</center>");
-            }
+        foreach ($matches[1] as $matche) {
+            print("<center><image class='image' src=" . $matche . "> </center>");
         }
+
+        foreach ($matches[2] as $matche) {
+            print($matche );
+        }
+       
     }
 }
