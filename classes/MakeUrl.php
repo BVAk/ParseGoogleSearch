@@ -22,8 +22,27 @@ class MakeUrl
 
         $contents = curl_exec($curl_handle);
         curl_close($curl_handle);
-        preg_match_all('/(?<!_)src=([\'"])?(.*?)\\1/', $contents, $result);
+        preg_match_all('/<img[^>]+>/i', $contents, $result);
+        $img = array();
 
-    return $result;
+        foreach ($result[0] as $img_tag) {
+            preg_match_all('/(src|alt)=("[^"]*")/i', $img_tag, $img[]);
+        }
+
+        foreach ($img as $pict) {
+            $a[] = str_replace('src=', '', $pict[0]);
+        }
+        foreach ($a as $pict) {
+            $b['src'][] = str_replace('alt=', '', $pict[0]);
+            $b['alt'][] = str_replace('alt=', '', $pict[1]);
+        }
+        
+        for ($i=0;$i<count($b);$i++) {
+            if(strpos($b['alt'][$i], $word) !== false){
+            print("<center>".$word."</center>");            
+            print("<center><image class='image' src=" . $b['src'][$i] . "> </center>");
+            print("<center>".$b['alt'][$i]."</center>");
+            }
+        }
     }
 }

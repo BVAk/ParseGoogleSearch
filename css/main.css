@@ -5,7 +5,9 @@
 }
 
 body {
-    background-color: floralwhite;
+    background-image: url("main.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 

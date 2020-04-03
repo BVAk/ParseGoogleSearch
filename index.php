@@ -22,11 +22,11 @@ include 'classes/MakeUrl.php';
 <body>
     <div class="main">
         <center class="p-2">
-            <h1> Choose nail style for today</h1>
+            <h1> Подбери ногти под настроение</h1>
         </center>
         <form action="" method="post" class="p-2">
             <div class="input-group">
-                <input id="word" name="word" type="text" class="form-control" placeholder="Search this blog">
+                <input id="word" name="word" type="text" class="form-control" placeholder="Введите название маникюра">
                 <div class="input-group-append">
                     <button class="btn btn-secondary submit" type="submit">
                         <i class="fa fa-search"></i>
@@ -37,22 +37,18 @@ include 'classes/MakeUrl.php';
 
         <?php
 
-if (isset($_POST['word'])) {
-    $word = $_POST['word'];
-    $url = new MakeUrl($word);
-    $img= $url->getSiteContent();
-    
-foreach ($img[0] as $image){
-    print("<center><img " . $image . "class='image'></center>");
-        
-}
+        if (isset($_POST['word'])) {
+            $word = $_POST['word'];
+            $url = new MakeUrl($word);
+            $img = $url->getSiteContent();
 
-}
+         
+        }
 
 
-?>
+        ?>
     </div>
-   
+
 </body>
 
 </html>
