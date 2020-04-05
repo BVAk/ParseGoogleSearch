@@ -40,9 +40,12 @@ include 'classes/MakeUrl.php';
         if (isset($_POST['word'])) {
             $word = $_POST['word'];
             $url = new MakeUrl($word);
-            $img = $url->getSiteContent();
-
-         
+            $url1 = "https://modaphoto.ru/dizajn-nogtej/";
+            $url2 = "http://www.fotoleo.com.ua/%D0%BC%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B0%D0%BD%D0%B8%D0%BA%D1%8E%D1%80/";
+            $img = $url->getSiteContent($url1);
+            if ($img == NULL) {
+                $img2 = $url->getSiteContent($url2);
+            }
         }
 
 

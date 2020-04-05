@@ -9,12 +9,9 @@ class MakeUrl
     }
     public $word;
 
-    public function getSiteContent()
+    public function getSiteContent(String $url)
     {
         $word = $this->word;
-
-        $url = "https://modaphoto.ru/dizajn-nogtej/";
-
         $curl_handle = curl_init();
         curl_setopt($curl_handle, CURLOPT_URL, $url);
         curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1); // Позволяет сохранить ответ сервера в переменную а не выводить на экран.
@@ -23,14 +20,12 @@ class MakeUrl
         $contents = curl_exec($curl_handle);
         curl_close($curl_handle);
         preg_match_all('/<img.*?src=[\'"](.*?)[\'"].*?alt=[\'"](.*?)[\'"].*?>/i', $contents, $matches);
-        
-        foreach ($matches[1] as $matche) {
-            print("<center><image class='image' src=" . $matche . "> </center>");
-        }
 
-        foreach ($matches[2] as $matche) {
-            print($matche );
+        for ($i = 0; $i < count($matches); $i++) {
+
+            if (strpos($matches[2][$i], $word) !== false) {
+                print("<center><image class='image' src=" . $matches[1][$i] . "> </center>");
+            }
         }
-       
     }
-}
+   }
